@@ -40,7 +40,6 @@ registerBlockType('gutenberg-notice-block/notices', {
                 value: attributes.title,
                 onChange: function(event) { onChangeDate(event.target.value); }
             }),
-
         );
     },
     save: function(props) {

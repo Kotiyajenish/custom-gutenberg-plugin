@@ -34,3 +34,10 @@ function gutenberg_notices_block_frontend() {
     );
 }
 add_action('wp_enqueue_scripts', 'gutenberg_notices_block_frontend');
+
+
+function enqueue_block_editor_assets() {
+    wp_enqueue_style('wp-editor');
+    wp_enqueue_script('wp-editor');
+}
+add_action('enqueue_block_editor_assets', 'enqueue_block_editor_assets');

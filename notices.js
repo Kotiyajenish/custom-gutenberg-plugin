@@ -3,13 +3,13 @@ var registerBlockType = wp.blocks.registerBlockType;
 var DatePicker = wp.components.DatePicker;
 
 registerBlockType('gutenberg-notice-block/notices', {
-    title: 'Notices',        
-    icon: 'warning',         
-    category: 'common',      
-    attributes: {            
-        type: { type: 'string', default: 'default' },  
-        title: { type: 'string' },                     
-        content: { type: 'array', source: 'children', selector: 'p' }, 
+    title: 'Notices',
+    icon: 'warning',
+    category: 'common',
+    attributes: {
+        type: { type: 'string', default: 'default' },
+        title: { type: 'string' },
+        content: { type: 'array', source: 'children', selector: 'p' },
         date: { type: 'string' }  // New date attribute
     },
     edit: function(props) {
@@ -22,24 +22,25 @@ registerBlockType('gutenberg-notice-block/notices', {
         function onChangeTitle(newTitle) {
             props.setAttributes({ title: newTitle });
         }
-
-        function onChangeDate(newDate) {
-            props.setAttributes({ date: newDate });
+        function onChangeDate(newTitle) {
+            props.setAttributes({ Date: newTitle });
         }
 
+
         return el('div', { className: 'notice-block-editor' },
+            el('div', { className: 'custom-gutenberg' }, 'Custom Gutenberg'), // Added custom div
             el('input', {
                 type: 'text',
                 value: attributes.title,
                 placeholder: 'Title',
                 onChange: function(event) { onChangeTitle(event.target.value); }
             }),
-            el('div', { className: 'notice-block-datepicker' },
-                el(DatePicker, {
-                    currentDate: attributes.date,
-                    onChange: function(newDate) { onChangeDate(newDate); }
-                })
-            )
+            el('input', {
+                type: 'date',
+                value: attributes.title,
+                onChange: function(event) { onChangeDate(event.target.value); }
+            }),
+
         );
     },
     save: function(props) {

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name: Custom Gutenberg
  * Plugin URI: https://www.your-site.com/
